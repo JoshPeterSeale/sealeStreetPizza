@@ -1,0 +1,14 @@
+type Query {
+    getDoughs:[Dough]
+    getDoughNames:[String]
+}
+
+type Dough {
+    id: ID!
+    name: String
+    mass: Float
+    hydration: Float
+    saltPercentage: Float
+    yeastPercentage: Float
+    cost: Float
+}

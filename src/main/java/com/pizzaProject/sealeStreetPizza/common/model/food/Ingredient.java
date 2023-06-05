@@ -1,14 +1,16 @@
 package com.pizzaProject.sealeStreetPizza.common.model.food;
 
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.experimental.SuperBuilder;
 
 @Getter
 @Setter
-@SuperBuilder
+@AllArgsConstructor
 public class Ingredient {
-    Item ingredient; // ingredient object
-    double costOfIngredient; // cost of ingredient per 100g
-    double mass; // mass of the ingredient used for the food item
+    int id;
+    String name; // the name of the ingredient
+    double cost; // the cost of the ingredient per 100g
+    int mass; // mass of the ingredient used for the food item
 }

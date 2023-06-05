@@ -1,9 +1,9 @@
 package com.pizzaProject.sealeStreetPizza.common.model.food.pizza;
 
-import com.pizzaProject.sealeStreetPizza.common.model.food.Item;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
+import org.springframework.data.annotation.Id;
 
 import java.util.List;
 
@@ -11,17 +11,11 @@ import java.util.List;
 @Setter
 @AllArgsConstructor
 public class Dough {
+    int id;
+    String name;
     double mass;
     double hydration;
     double saltPercentage;
     double yeastPercentage;
-    List<Item> extraIngredients;
-
-
-    public Dough(double m, double h, double s, double y) {
-        this.mass = m;
-        this.hydration = h;
-        this.saltPercentage = s;
-        this.yeastPercentage = y;
-    }
+    double cost; // cost per unit
 }
