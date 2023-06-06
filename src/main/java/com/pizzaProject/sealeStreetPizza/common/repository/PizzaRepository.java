@@ -28,17 +28,19 @@ public class PizzaRepository {
 
     public Pizza getPizzaById(int id) {
         return this.pizzas.stream().
-                filter(dough ->dough.getId()==id).
+                filter(pizza -> pizza.getId()==id).
                 findFirst().orElseThrow(()-> new RuntimeException("Dough not found"));
     }
 
     public Pizza getPizzaByName(String name) {
         return this.pizzas.stream().
-                filter(dough ->dough.getName()==name).
+                filter(pizza-> pizza.getName()==name).
                 findFirst().orElseThrow(()-> new RuntimeException("Pizza not found"));
     }
 
     public void setPizzas(){
-        pizzas.add(new Pizza(1,"Margherita", ingredientRepository.getIngredientsByNames(Arrays.asList("mozzarella","tomato sauce")), doughRepository.getDoughByName("standard")));
+        Pizza margherita = new Pizza(1,"Margherita", ingredientRepository.getIngredientsByNames(Arrays.asList("mozzarella","tomato sauce")), doughRepository.getDoughByName("standard"));
+        margherita.setCostOfPizza();
+        pizzas.add(margherita);
     }
 }

@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.graphql.data.method.annotation.Argument;
 import org.springframework.graphql.data.method.annotation.QueryMapping;
 import org.springframework.stereotype.Controller;
+import org.yaml.snakeyaml.events.Event;
 
 import java.util.List;
 
@@ -25,17 +26,22 @@ public class IngredientController {
     }
 
     @QueryMapping
-    public Ingredient getIngredientsById(@Argument int id){
+    public Ingredient getIngredientById(@Argument int id){
         return ingredientRepository.getIngredientById(id);
     }
 
     @QueryMapping
-    public Ingredient getIngredientsByName(@Argument String name){
+    public Ingredient getIngredientByName(@Argument String name){
         return ingredientRepository.getIngredientByName(name);
     }
 
     @QueryMapping
     public List<Ingredient> getIngredientsByNames(@Argument List<String> names){
         return ingredientRepository.getIngredientsByNames(names);
+    }
+
+    @QueryMapping
+    public List<Ingredient> getIngredientsByIds(@Argument List<Integer> ids){
+        return ingredientRepository.getIngredientsByIds(ids);
     }
 }

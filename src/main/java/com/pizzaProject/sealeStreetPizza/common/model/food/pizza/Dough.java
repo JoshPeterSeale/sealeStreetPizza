@@ -13,7 +13,7 @@ import java.util.List;
 public class Dough {
     int id;
     String name;
-    double mass;
+    int mass;
     double hydration;
     double saltPercentage;
     double yeastPercentage;

@@ -1,6 +1,17 @@
 type Query {
     getDoughs:[Dough]
     getDoughNames:[String]
+    getDoughById(id: ID): Dough
+    getDoughByName(name: String): Dough
+    getIngredients: [Ingredient]
+    getIngredientById(id: ID!): Ingredient
+    getIngredientsByIds(ids: [ID]!): [Ingredient]
+    getIngredientByName(name: String!): Ingredient
+    getIngredientsByNames(names: [String]!): [Ingredient]
+    getPizzas: [Pizza]
+    getPizzaById(id: ID!): Pizza
+    getPizzaByName(name: String!): Pizza
+
 }
 
 type Dough {
@@ -11,4 +22,19 @@ type Dough {
     saltPercentage: Float
     yeastPercentage: Float
     cost: Float
+}
+
+type Ingredient {
+    id: ID!
+    name: String
+    cost: Float
+    mass: Int
+}
+
+type Pizza {
+    id: ID!
+    name: String!
+    ingredients: [Ingredient]
+    dough: Dough
+    costOfPizza: Float
 }

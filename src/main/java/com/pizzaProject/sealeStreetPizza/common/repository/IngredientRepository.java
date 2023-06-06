@@ -3,6 +3,7 @@ package com.pizzaProject.sealeStreetPizza.common.repository;
 import com.pizzaProject.sealeStreetPizza.common.model.food.Ingredient;
 import jakarta.annotation.PostConstruct;
 import org.springframework.stereotype.Repository;
+import org.yaml.snakeyaml.events.Event;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -25,6 +26,11 @@ public class IngredientRepository {
                 filter(ingredient -> ingredient.getId()==id).
                 findFirst().orElseThrow(()-> new RuntimeException("Ingredient not found"));
     }
+    public List<Ingredient> getIngredientsByIds(List<Integer> ids){
+        return this.ingredients.stream().
+                filter(ingredient -> ids.contains(ingredient.getId())).collect(Collectors.toList());
+    }
+
 
     public Ingredient getIngredientByName(String name){
         return this.ingredients.stream().

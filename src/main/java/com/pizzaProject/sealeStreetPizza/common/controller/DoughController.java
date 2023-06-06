@@ -30,15 +30,15 @@ public class DoughController {
         return doughRepository.getDoughNames();
     }
 
-    /*
     @QueryMapping
     public Dough getDoughById(@Argument int id){
         return doughRepository.getDoughById(id);
     }
 
     @QueryMapping
-    public Dough getDoughById(@Argument String name){
+    public Dough getDoughByName(@Argument String name){
         return doughRepository.getDoughByName(name);
     }
-     */
+
+
 }
