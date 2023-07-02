@@ -1,9 +1,10 @@
 package com.pizzaProject.sealeStreetPizza.common.controller;
 
-import com.pizzaProject.sealeStreetPizza.common.model.food.pizza.Pizza;
-import com.pizzaProject.sealeStreetPizza.common.repository.PizzaRepository;
-import org.springframework.beans.factory.annotation.Autowired;
+import com.pizzaProject.sealeStreetPizza.common.model.food.Pizza;
+import com.pizzaProject.sealeStreetPizza.common.model.food.PizzaInput;
+import com.pizzaProject.sealeStreetPizza.common.repository.PizzaRepo;
 import org.springframework.graphql.data.method.annotation.Argument;
+import org.springframework.graphql.data.method.annotation.MutationMapping;
 import org.springframework.graphql.data.method.annotation.QueryMapping;
 import org.springframework.stereotype.Controller;
 
@@ -12,28 +13,19 @@ import java.util.List;
 @Controller
 public class PizzaController {
 
-    @Autowired
-    public final PizzaRepository pizzaRepository;
+    private final PizzaRepo pizzaRepo;
 
-    @Autowired
-    public PizzaController(PizzaRepository pizzaRepository) {
-        this.pizzaRepository = pizzaRepository;
+    public PizzaController(PizzaRepo pizzaRepo) {
+        this.pizzaRepo = pizzaRepo;
     }
 
     @QueryMapping
     public List<Pizza> getPizzas() {
-        List<Pizza> pizzas = pizzaRepository.getPizzas();
-        return pizzas;
+        return pizzaRepo.findAll();
     }
 
-    @QueryMapping
-    public Pizza getPizzaById(@Argument int id){
-        return pizzaRepository.getPizzaById(id);
+    @MutationMapping
+    public Pizza createPizza(@Argument PizzaInput pizzaInput){
+        return pizzaRepo.save(new Pizza(pizzaInput.name(),pizzaInput.ingredients()));
     }
-
-    @QueryMapping
-    public Pizza getPizzaByName(@Argument String name){
-        return pizzaRepository.getPizzaByName(name);
-    }
-
 }
