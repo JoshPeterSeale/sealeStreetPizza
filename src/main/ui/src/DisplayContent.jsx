@@ -1,4 +1,4 @@
-import DisplayMenu from "./DisplayMenu";
+import DisplayMenu from "./menu/DisplayMenu";
 import DisplayAbout from "./DisplayAbout";
 import DisplayHowTo from "./DisplayHowTo";
 
